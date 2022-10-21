@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="gs1" class="in.tp.scd.service.GreetServiceStandardImpl" />
+
+	<bean id="gs2"
+		class="in.tp.scd.service.GreetServiceArgumentedImpl" scope="prototype">
+		<property name="greetNote" value="Vanakkam " />
+	</bean>
+
+	<bean id="gs3"
+		class="in.tp.scd.service.GreetServiceArgumentedImpl">
+		<constructor-arg index="0" value="Namaskar " />
+	</bean>
+
+	<bean id="gp"
+		class="in.tp.scd.service.GtreetNoteProviderTimeBasedImpl" />
+
+	<bean id="gs4" class="in.tp.scd.service.GreetServiceAdvancedImpl">
+		<!-- <property name="gnp" ref="gp" /> -->
+		<constructor-arg index="0" ref="gp" />
+	</bean>
+
+	<!-- <bean id="gs4" class="in.tp.scd.service.GreetServiceAdvancedImpl"> 
+		<property name="gnp"> <bean class="in.tp.scd.service.GtreetNoteProviderTimeBasedImpl" 
+		/> </property> </bean> -->
+
+</beans>
